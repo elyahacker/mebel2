@@ -1,0 +1,471 @@
+<!DOCTYPE html>
+<html lang="az">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>VELORA | Sənin Sənət Əsərin</title>
+
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.0/font/bootstrap-icons.css">
+    <link
+        href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;600;700&family=Playfair+Display:ital,wght@0,700;1,700&display=swap"
+        rel="stylesheet">
+
+    <style>
+        :root {
+            --bg-premium: linear-gradient(135deg, #fdfaf7 0%, #f2ece4 100%);
+            --accent: #b08d75;
+            /* Warm Bronze */
+            --onyx: #1a1a1a;
+            /* --glass: rgba(255, 255, 255, 0.8); */
+            /* --glass: rgba(255,239,213); */
+            --glass: red;
+            --transition: all 0.5s cubic-bezier(0.165, 0.84, 0.44, 1);
+        }
+
+        body {
+            font-family: 'Montserrat', sans-serif;
+            background: var(--bg-premium);
+            color: var(--onyx);
+            scroll-behavior: smooth;
+        }
+
+        h1, h2, h3,.serif {
+            font-family: 'Playfair Display', serif;
+        }
+
+        /* HEADER (Navbar) */
+      .navbar {
+            padding: 0.8rem 0;
+            background: transparent;
+            transition: var(--transition);
+        }
+
+      .navbar.scrolled {
+            padding: 0.8rem 0;
+            background: var(--glass);
+            backdrop-filter: blur(15px);
+            border-bottom: 1px solid rgba(0, 0, 0, 0.05);
+        }
+
+      .navbar-brand {
+            display: flex; /* Loqo və yazını yan-yana düzmək üçün */
+            align-items: center;
+            letter-spacing: 5px;
+            color: var(--dark)!important;
+            font-size: 1.8rem;
+            text-decoration: none;
+        }
+
+        /* YENİ LOQO CSS - QÜSURSUZ GÖRÜNÜŞ ÜÇÜN */
+      .brand-logo {
+            height: 60px; /* İdeal hündürlük */
+            width: 60px;  /* Tam dairə üçün hündürlüklə eyni olmalıdır */
+            border-radius: 50%;
+            object-fit: cover; /* Şəkli kəsmədən mərkəzə yerləşdirir */
+            margin-right: 15px;
+            border: 1px solid rgba(176, 141, 117, 0.3); /* Bronze rəngli incə kənar */
+            background-color: white;
+        }
+
+      .text-bronze {
+            color: var(--accent);
+        }
+
+      .nav-link {
+            font-weight: 600;
+            letter-spacing: 1px;
+            color: var(--dark)!important;
+            opacity: 0.6;
+            transition: 0.3s;
+        }
+
+      .nav-link:hover,
+      .nav-link.active {
+            opacity: 1;
+            color: var(--accent)!important;
+        }
+
+        /* HERO SLIDER */
+      .hero-title {
+            font-size: clamp(2.2rem, 10vw, 5.5rem);
+            font-weight: 700;
+            line-height: 1.1;
+            margin-bottom: 20px;
+        }
+
+      .carousel-item {
+            height: 100vh;
+            min-height: 600px;
+        }
+
+      .carousel-img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            filter: brightness(0.5);
+        }
+
+      .carousel-caption {
+            bottom: 25%;
+            text-align: left!important;
+            left: 10%!important;
+            max-width: 800px;
+        }
+
+        /* Məhsul Çərçivələri */
+      .product-frame {
+            background: white;
+            border: 1px solid rgba(0, 0, 0, 0.03);
+            border-radius: 20px;
+            padding: 15px;
+            transition: var(--transition);
+            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.02);
+            height: 100%;
+        }
+
+      .product-img-wrapper {
+            border-radius: 15px;
+            overflow: hidden;
+            aspect-ratio: 4/5;
+            margin-bottom: 15px;
+        }
+
+      .product-img-wrapper img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: var(--transition);
+        }
+
+      .product-frame:hover {
+            transform: translateY(-12px);
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.08);
+            border-color: var(--accent);
+        }
+
+        /* FOOTER */
+        footer {
+            background: #080808;
+            color: #777;
+            padding: 100px 0 40px;
+        }
+
+      .footer-title {
+            color: white;
+            font-weight: 700;
+            margin-bottom: 35px;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            font-size: 0.8rem;
+        }
+
+      .footer-link {
+            color: #777;
+            text-decoration: none;
+            transition: 0.3s;
+            display: block;
+            margin-bottom: 12px;
+            font-size: 0.9rem;
+        }
+
+      .footer-link:hover {
+            color: var(--accent);
+            padding-left: 8px;
+        }
+
+      .social-btn {
+            width: 45px;
+            height: 45px;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 50%;
+            color: white;
+            margin-right: 15px;
+            transition: 0.4s;
+        }
+
+      .social-btn:hover {
+            background: var(--accent);
+            border-color: var(--accent);
+            transform: translateY(-5px) rotate(360deg);
+        }
+
+      .whatsapp-button {
+            position: fixed;
+            right: 30px;
+            bottom: 30px;
+            width: 60px;
+            height: 60px;
+            background-color: #25d366;
+            color: white;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 35px;
+            box-shadow: 2px 10px 20px rgba(0, 0, 0, 0.2);
+            z-index: 9999;
+            transition: var(--transition);
+            text-decoration: none;
+        }
+
+      .whatsapp-button:hover {
+            transform: translateY(-10px);
+            color: white;
+            background-color: #20b858;
+        }
+
+        /* Responsive Mobile Header */
+        @media (max-width: 991px) {
+          .navbar {
+                width: 95%;
+                padding: 0.5rem 1.5rem;
+            }
+
+          .hero-title {
+                font-size: 2.5rem;
+            }
+          .brand-logo {
+                height: 35px;
+                width: 35px;
+            }
+          .navbar-brand {
+                font-size: 1.4rem;
+                letter-spacing: 2px;
+            }
+        }
+    </style>
+</head>
+
+<body data-bs-spy="scroll" data-bs-target="#mainNav" data-bs-offset="120">
+
+    <nav id="mainNav" class="navbar navbar-expand-lg fixed-top">
+        <div class="container">
+            <a class="navbar-brand fw-bold" href="#home">
+                <img src="logo.png" alt="VELORA" class="brand-logo">
+                VELORA<span class="text-bronze">.</span>
+            </a>
+            <button class="navbar-toggler border-0 shadow-none" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <i class="bi bi-list fs-1"></i>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto text-uppercase fixe">
+                    <li class="nav-item"><a class="nav-link active" href="#home">Ana Səhifə</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#about">Hekayəmiz</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#catalog">Kataloq</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#contact">Əlaqə</a></li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <header id="home" id="heroSlider" class="carousel slide carousel-fade" data-bs-ride="carousel">
+        <div class="carousel-inner">
+            <div class="carousel-item active" data-bs-interval="1000">
+                <img src="https://images.unsplash.com/photo-1618221195710-dd6b41faaea6?q=80&w=1920" class="carousel-img" alt="Luxury 1">
+                <div class="carousel-caption">
+                    <h1 class="hero-title">Sakitliyin <br><span class="text-bronze">Yeni Forması.</span></h1>
+                    <p class="lead opacity-75">Minimalist dizayn, maksimum sənətkarlıq.</p>
+                </div>
+            </div>
+            <div class="carousel-item" data-bs-interval="1000">
+                <img src="https://images.unsplash.com/photo-1631679706909-1844bbd07221?q=80&w=1920" class="carousel-img" alt="Luxury 2">
+                <div class="carousel-caption">
+                    <h1 class="hero-title">Evin Sənin <br><span class="text-bronze">Ruhundur.</span></h1>
+                    <p class="lead opacity-75">Hər bir detal sizin üçün xüsusi seçilir.</p>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <section id="about" class="py-5 mt-5">
+        <div class="container py-5">
+            <div class="row align-items-center">
+                <div class="col-lg-5">
+                    <h2 class="display-4 fw-bold mb-4">Hekayəmiz</h2>
+                    <p class="text-muted mb-4">1998-ci ildən bəri biz ağacın ruhunu hiss edərək onu evinizin ən dəyərli küncünə çeviririk. Bizim üçün keyfiyyət sadəcə standart deyil, bir həyat tərzidir.</p>
+                    <div class="d-flex gap-4 mt-5">
+                        <div>
+                            <h3 class="fw-bold m-0 text-bronze">25+</h3><small class="text-muted">İllik Təcrübə</small>
+                        </div>
+                        <div class="vr"></div>
+                        <div>
+                            <h3 class="fw-bold m-0 text-bronze">1500+</h3><small class="text-muted">Məmnun Müştəri</small>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-6 offset-lg-1">
+                    <div class="product-frame mt-4 mt-lg-0">
+                        <img src="sekil1.png" class="img-fluid rounded-4 shadow-sm" alt="Hekayə">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="catalog" class="py-5">
+        <div class="container py-5">
+            <div class="text-center mb-5">
+                <h2 class="display-5 fw-bold">Eksklüziv Kataloq</h2>
+                <div class="mx-auto" style="width: 50px; height: 2px; background: var(--accent);"></div>
+            </div>
+            <div class="row g-4">
+                <div class="col-lg-3 col-md-6">
+                    <div class="product-frame text-center">
+                        <div class="product-img-wrapper"><img src="metbex.png" alt="Mətbəx"></div>
+                        <h5 class="fw-bold">Mətbəx</h5>
+                    </div>
+                </div>
+                <div class="col-lg-3 col-md-6">
+                    <div class="product-frame text-center">
+                        <div class="product-img-wrapper"><img src="yataq.png" alt="Yataq"></div>
+                        <h5 class="fw-bold">Yataq Dəsti</h5>
+                    </div>
+                </div>
+                <div class="col-lg-3 col-md-6">
+                    <div class="product-frame text-center">
+                        <div class="product-img-wrapper"><img src="qonaqotagi.png" alt="Qonaq"></div>
+                        <h5 class="fw-bold">Qonaq Dəsti</h5>
+                    </div>
+                </div>
+                <div class="col-lg-3 col-md-6">
+                    <div class="product-frame text-center">
+                        <div class="product-img-wrapper"><img src="usaqotagi.png" alt="Uşaq"></div>
+                        <h5 class="fw-bold">Uşaq Mebeli</h5>
+                    </div>
+                </div>
+                <div class="col-lg-3 col-md-6">
+                    <div class="product-frame text-center">
+                        <div class="product-img-wrapper"><img src="tv.png" alt="TV"></div>
+                        <h5 class="fw-bold">TV Stendi</h5>
+                    </div>
+                </div>
+                <div class="col-lg-3 col-md-6">
+                    <div class="product-frame text-center">
+                        <div class="product-img-wrapper"><img src="qarderob.png" alt="Qarderob"></div>
+                        <h5 class="fw-bold">Qarderob</h5>
+                    </div>
+                </div>
+                <div class="col-lg-3 col-md-6">
+                    <div class="product-frame text-center">
+                        <div class="product-img-wrapper"><img src="qapi.png" alt="Qapı"></div>
+                        <h5 class="fw-bold">Qapı</h5>
+                    </div>
+                </div>
+                <div class="col-lg-3 col-md-6">
+                    <div class="product-frame text-center">
+                        <div class="product-img-wrapper"><img src="divan.png" alt="Divan"></div>
+                        <h5 class="fw-bold">Divan</h5>
+                    </div>
+                </div>
+                <div class="col-lg-3 col-md-6">
+                    <div class="product-frame text-center">
+                        <div class="product-img-wrapper"><img src="puff.png" alt="Puff"></div>
+                        <h5 class="fw-bold">Puff</h5>
+                    </div>
+                </div>
+                <div class="col-lg-3 col-md-6">
+                    <div class="product-frame text-center">
+                        <div class="product-img-wrapper"><img src="jurnalni.png" alt="Jurnalni"></div>
+                        <h5 class="fw-bold">Jurnalni</h5>
+                    </div>
+                </div>
+                <div class="col-lg-3 col-md-6">
+                    <div class="product-frame text-center">
+                        <div class="product-img-wrapper"><img src="salon.png" alt="Gözəllik"></div>
+                        <h5 class="fw-bold">Gözəllik Salonu</h5>
+                    </div>
+                </div>
+                <div class="col-lg-3 col-md-6">
+                    <div class="product-frame text-center">
+                        <div class="product-img-wrapper"><img src="moydadir.png" alt="Moydadır"></div>
+                        <h5 class="fw-bold">Moydadır</h5>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="contact" class="py-5">
+        <div class="container py-5">
+            <div class="row g-5">
+                <div class="col-lg-5">
+                    <div class="bg-white p-5 rounded-4 shadow-sm h-100 border border-light">
+                        <h2 class="serif fw-bold mb-4">Bizimlə Əlaqə</h2>
+                        <form>
+                            <div class="mb-3"><input type="text" class="form-control bg-light border-0 p-3" placeholder="Adınız"></div>
+                            <div class="mb-3"><input type="email" class="form-control bg-light border-0 p-3" placeholder="Email"></div>
+                            <div class="mb-4"><textarea class="form-control bg-light border-0 p-3" rows="4" placeholder="Mesajınız"></textarea></div>
+                            <button class="btn btn-dark w-100 py-3 rounded-pill text-uppercase fw-bold shadow">Göndər</button>
+                        </form>
+                    </div>
+                </div>
+                <div class="col-lg-7">
+                    <div class="rounded-4 overflow-hidden shadow-sm h-100" style="min-height: 450px;">
+                        <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3039.710501394197!2d49.95276457582496!3d40.370943071447066!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x403064a87834451f%3A0xf562784aea9d8b7c!2sKhudu%20Mammadov%2C%20Baku!5e0!3m2!1str!2saz!4v1771635150303!5m2!1str!2saz" width="100%" height="100%" style="border:0;" allowfullscreen="" loading="lazy"></iframe>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <div class="container">
+            <div class="row gy-5">
+                <div class="col-lg-3">
+                    <h2 class="text-white fw-bold mb-4">VELORA<span class="text-bronze">.</span></h2>
+                    <p class="small opacity-50 mb-4">Sizin eviniz üçün ən yüksək sənət həlləri. Biz sadəliyin və keyfiyyətin gücünə inanırıq.</p>
+                    <div class="d-flex">
+                        <a href="https://www.instagram.com/qdrvs_e/?utm_source=ig_web_button_share_sheet" class="social-btn"><i class="bi bi-instagram"></i></a>
+                        <a href="https://www.tiktok.com/dekorchu" class="social-btn"><i class="bi bi-tiktok"></i></a>
+                        <a href="https://wa.me/994704303303" class="social-btn"><i class="bi bi-whatsapp"></i></a>
+                        <a href="" class="social-btn"><i class="bi bi-youtube"></i></a>
+                    </div>
+                </div>
+                <div class="col-lg-3 offset-lg-1">
+                    <h5 class="footer-title">Kolleksiyalar</h5>
+                    <a href="#catalog" class="footer-link">Mətbəx Mebeli</a>
+                    <a href="#catalog" class="footer-link">Yataq Dəstləri</a>
+                    <a href="#catalog" class="footer-link">Qonaq Dəstləri</a>
+                    <a href="#catalog" class="footer-link">Vanna Otağı</a>
+                </div>
+                <div class="col-lg-2">
+                    <h5 class="footer-title">İş Saatlarımız</h5>
+                    <p class="small mb-1">Həftə içi 09:00 - 19:00</p>
+                    <p class="small">Şənbə 10:00 - 16:00</p>
+                </div>
+            </div>
+            <div class="border-top border-white border-opacity-10 mt-5 pt-4 text-center">
+                <p class="small opacity-50 mb-0">© 2026 VELORA Furniture Gallery. Bütün hüquqlar qorunur. Design by Elvira Gadirova</p>
+            </div>
+        </div>
+    </footer>
+
+    <a href="https://wa.me/994704303303" class="whatsapp-button" target="_blank">
+        <i class="bi bi-whatsapp"></i>
+    </a>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script>
+        window.onscroll = function () {
+            var nav = document.querySelector('.navbar');
+            if (window.pageYOffset > 50) {
+                nav.style.width = "100%";
+                nav.style.margin = "0";
+                nav.style.borderRadius = "0";
+                nav.style.background = "rgba(255,255,255,0.95)";
+            } else {
+                nav.style.width = "90%";
+                nav.style.margin = "20px auto";
+                nav.style.borderRadius = "50px";
+                nav.style.background = "rgba(255,255,255,0.8)";
+            }
+        };
+    </script>
+</body>
+
+</html>
