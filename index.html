@@ -8,19 +8,15 @@
 
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.0/font/bootstrap-icons.css">
-    <link
-        href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;600;700&family=Playfair+Display:ital,wght@0,700;1,700&display=swap"
-        rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;600;700&family=Playfair+Display:ital,wght@0,700;1,700&display=swap" rel="stylesheet">
 
     <style>
         :root {
             --bg-premium: linear-gradient(135deg, #fdfaf7 0%, #f2ece4 100%);
             --accent: #b08d75;
-            /* Warm Bronze */
             --onyx: #1a1a1a;
-            /* --glass: rgba(255, 255, 255, 0.8); */
-            /* --glass: rgba(255,239,213); */
-            --glass: red;
+            /* Shisha effekti ucun red evezine glass */
+            --glass: rgba(255, 255, 255, 0.85);
             --transition: all 0.5s cubic-bezier(0.165, 0.84, 0.44, 1);
         }
 
@@ -31,91 +27,108 @@
             scroll-behavior: smooth;
         }
 
-        h1, h2, h3,.serif {
+        h1, h2, h3, .serif {
             font-family: 'Playfair Display', serif;
         }
 
-        /* HEADER (Navbar) */
-      .navbar {
-            padding: 0.8rem 0;
-            background: transparent;
-            transition: var(--transition);
-        }
-
-      .navbar.scrolled {
-            padding: 0.8rem 0;
+        /* HEADER (Navbar) - YENİDƏN DÜZƏNLƏNDİ */
+        .navbar {
+            padding: 1rem 1.5rem;
             background: var(--glass);
             backdrop-filter: blur(15px);
-            border-bottom: 1px solid rgba(0, 0, 0, 0.05);
+            -webkit-backdrop-filter: blur(15px);
+            transition: var(--transition);
+            width: 90%;
+            margin: 20px auto;
+            border-radius: 50px;
+            border: 1px solid rgba(176, 141, 117, 0.1);
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
         }
 
-      .navbar-brand {
-            display: flex; /* Loqo və yazını yan-yana düzmək üçün */
+        /* Scroll zamani daha yigcam amma yine de yumru qalsin */
+        .navbar.scrolled {
+            padding: 0.6rem 1.5rem;
+            width: 95%;
+            margin: 10px auto;
+            background: rgba(255, 255, 255, 0.95);
+            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.1);
+        }
+
+        .navbar-brand {
+            display: flex;
             align-items: center;
             letter-spacing: 5px;
-            color: var(--dark)!important;
-            font-size: 1.8rem;
+            color: var(--onyx) !important;
+            font-size: 1.6rem;
             text-decoration: none;
         }
 
-        /* YENİ LOQO CSS - QÜSURSUZ GÖRÜNÜŞ ÜÇÜN */
-      .brand-logo {
-            height: 60px; /* İdeal hündürlük */
-            width: 60px;  /* Tam dairə üçün hündürlüklə eyni olmalıdır */
+        .brand-logo {
+            height: 50px;
+            width: 50px;
             border-radius: 50%;
-            object-fit: cover; /* Şəkli kəsmədən mərkəzə yerləşdirir */
+            object-fit: cover;
             margin-right: 15px;
-            border: 1px solid rgba(176, 141, 117, 0.3); /* Bronze rəngli incə kənar */
+            border: 1px solid var(--accent);
             background-color: white;
+            transition: var(--transition);
         }
 
-      .text-bronze {
+        .navbar.scrolled .brand-logo {
+            height: 40px;
+            width: 40px;
+        }
+
+        .text-bronze {
             color: var(--accent);
         }
 
-      .nav-link {
+        .nav-link {
             font-weight: 600;
+            font-size: 0.85rem;
+            text-transform: uppercase;
             letter-spacing: 1px;
-            color: var(--dark)!important;
+            color: var(--onyx) !important;
             opacity: 0.6;
             transition: 0.3s;
+            padding: 0.5rem 1rem !important;
         }
 
-      .nav-link:hover,
-      .nav-link.active {
+        .nav-link:hover,
+        .nav-link.active {
             opacity: 1;
-            color: var(--accent)!important;
+            color: var(--accent) !important;
         }
 
         /* HERO SLIDER */
-      .hero-title {
+        .hero-title {
             font-size: clamp(2.2rem, 10vw, 5.5rem);
             font-weight: 700;
             line-height: 1.1;
             margin-bottom: 20px;
         }
 
-      .carousel-item {
+        .carousel-item {
             height: 100vh;
             min-height: 600px;
         }
 
-      .carousel-img {
+        .carousel-img {
             width: 100%;
             height: 100%;
             object-fit: cover;
             filter: brightness(0.5);
         }
 
-      .carousel-caption {
+        .carousel-caption {
             bottom: 25%;
-            text-align: left!important;
-            left: 10%!important;
+            text-align: left !important;
+            left: 10% !important;
             max-width: 800px;
         }
 
         /* Məhsul Çərçivələri */
-      .product-frame {
+        .product-frame {
             background: white;
             border: 1px solid rgba(0, 0, 0, 0.03);
             border-radius: 20px;
@@ -125,21 +138,21 @@
             height: 100%;
         }
 
-      .product-img-wrapper {
+        .product-img-wrapper {
             border-radius: 15px;
             overflow: hidden;
             aspect-ratio: 4/5;
             margin-bottom: 15px;
         }
 
-      .product-img-wrapper img {
+        .product-img-wrapper img {
             width: 100%;
             height: 100%;
             object-fit: cover;
             transition: var(--transition);
         }
 
-      .product-frame:hover {
+        .product-frame:hover {
             transform: translateY(-12px);
             box-shadow: 0 20px 40px rgba(0, 0, 0, 0.08);
             border-color: var(--accent);
@@ -152,7 +165,7 @@
             padding: 100px 0 40px;
         }
 
-      .footer-title {
+        .footer-title {
             color: white;
             font-weight: 700;
             margin-bottom: 35px;
@@ -161,7 +174,7 @@
             font-size: 0.8rem;
         }
 
-      .footer-link {
+        .footer-link {
             color: #777;
             text-decoration: none;
             transition: 0.3s;
@@ -170,12 +183,12 @@
             font-size: 0.9rem;
         }
 
-      .footer-link:hover {
+        .footer-link:hover {
             color: var(--accent);
             padding-left: 8px;
         }
 
-      .social-btn {
+        .social-btn {
             width: 45px;
             height: 45px;
             display: inline-flex;
@@ -188,13 +201,13 @@
             transition: 0.4s;
         }
 
-      .social-btn:hover {
+        .social-btn:hover {
             background: var(--accent);
             border-color: var(--accent);
             transform: translateY(-5px) rotate(360deg);
         }
 
-      .whatsapp-button {
+        .whatsapp-button {
             position: fixed;
             right: 30px;
             bottom: 30px;
@@ -213,35 +226,33 @@
             text-decoration: none;
         }
 
-      .whatsapp-button:hover {
+        .whatsapp-button:hover {
             transform: translateY(-10px);
             color: white;
             background-color: #20b858;
         }
 
-        /* Responsive Mobile Header */
         @media (max-width: 991px) {
-          .navbar {
+            .navbar {
                 width: 95%;
-                padding: 0.5rem 1.5rem;
+                padding: 0.5rem 1.2rem;
+                margin: 10px auto;
             }
-
-          .hero-title {
-                font-size: 2.5rem;
-            }
-          .brand-logo {
-                height: 35px;
-                width: 35px;
-            }
-          .navbar-brand {
-                font-size: 1.4rem;
-                letter-spacing: 2px;
+            .hero-title { font-size: 2.5rem; }
+            .brand-logo { height: 40px; width: 40px; }
+            .navbar-brand { font-size: 1.3rem; letter-spacing: 2px; }
+            .navbar-collapse {
+                background: white;
+                margin-top: 15px;
+                padding: 20px;
+                border-radius: 20px;
+                box-shadow: 0 10px 30px rgba(0,0,0,0.1);
             }
         }
     </style>
 </head>
 
-<body data-bs-spy="scroll" data-bs-target="#mainNav" data-bs-offset="120">
+<body data-bs-spy="scroll" data-bs-target="#mainNav" data-bs-offset="2000">
 
     <nav id="mainNav" class="navbar navbar-expand-lg fixed-top">
         <div class="container">
@@ -250,10 +261,10 @@
                 VELORA<span class="text-bronze">.</span>
             </a>
             <button class="navbar-toggler border-0 shadow-none" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
-                <i class="bi bi-list fs-1"></i>
+                <i class="bi bi-list fs-2"></i>
             </button>
             <div class="collapse navbar-collapse" id="navbarNav">
-                <ul class="navbar-nav ms-auto text-uppercase fixe">
+                <ul class="navbar-nav ms-auto">
                     <li class="nav-item"><a class="nav-link active" href="#home">Ana Səhifə</a></li>
                     <li class="nav-item"><a class="nav-link" href="#about">Hekayəmiz</a></li>
                     <li class="nav-item"><a class="nav-link" href="#catalog">Kataloq</a></li>
@@ -262,10 +273,9 @@
             </div>
         </div>
     </nav>
-
-    <header id="home" id="heroSlider" class="carousel slide carousel-fade" data-bs-ride="carousel">
-        <div class="carousel-inner">
-            <div class="carousel-item active" data-bs-interval="1000">
+   <header id="home" id="heroSlider" class="carousel slide carousel-fade" data-bs-ride="carousel">
+        <div class="carousel-inner" data-bs-interval="2000">
+            <div class="carousel-item active" >
                 <img src="https://images.unsplash.com/photo-1618221195710-dd6b41faaea6?q=80&w=1920" class="carousel-img" alt="Luxury 1">
                 <div class="carousel-caption">
                     <h1 class="hero-title">Sakitliyin <br><span class="text-bronze">Yeni Forması.</span></h1>
@@ -466,6 +476,7 @@
             }
         };
     </script>
-</body>
-
-</html>
+        
+    </body>
+    </html>
+    
